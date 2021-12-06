@@ -111,7 +111,7 @@ If you are reading this, I sincerely appreciate you taking your time to look at 
 
 ## For More Information
 
-See the full analysis in the [Jupyter Notebook](./modeling_earthquake_damage.ipynb) or review this [Presentation](./presentation.pdf). For our full data preprocessing steps and exploratory data analysis, check out our [EDA Notebook Here](./data_preparatin_and_eda.ipynb)!
+See the full analysis in the [Jupyter Notebook](./modeling_earthquake_damage.ipynb) or review this [Presentation](./presentation.pdf). For our full data preprocessing steps and exploratory data analysis, check out our [EDA Notebook Here](./data_preparation_and_eda.ipynb)!
 
 The necessary dependencies and requirements are under 'environments.yml' and 'requirements.txt' files, respectively.
 
