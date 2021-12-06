@@ -14,7 +14,8 @@ We also found some class imbalance in our target variable, at about a 67 / 33 sp
 
 # Data Understanding
 
-This is our preprocessed dataset:
+Dataset information:
+
 ![full_df_values](/images/full_df_values.png)
 
 Because we are looking into the predicting total damage grade caused by the features of the house, house information such as building uses, secondard building uses, and ownership should have no effect in the overall damage caused by an earthquake. Thus, we dropped those columns, reducing our dataset about 33%.
@@ -25,17 +26,27 @@ Next, for the df_labels. Because we are interested in modeling for the major dam
 
 # Data Preparation
 
-For the remaining object types, we converted them into a categorical so we can pass the dataset into a StandardScaler to find the most important features, turning our dataset into this:
+In order to create a better model - by 0.05 or 5%, we engineered a 'skinny_tall' category. If a building was taller than the average normalized height, but also had a smaller average normalized area (or base) of the building, it would be labeled as such. 
 
-![major_damage](/images/major_damage.png)
+For buildings that were tall, but had a small base, they were much more likely to be near complete destruction compared to that of a regular building.
+
+![skinny_tall](/images/engineered_feature.png)
+
+Next, we split the data up into train / test splits in order to have a validation set the train never 'sees'. 
+
+For the remaining object types, we converted them into a categorical using OneHotEncoder and transforming both X_train and X_test so they are ready for modeling and validation.
 
 # Modeling
 
 ## KNN
 
-For our baseline model, we created a KNN with parameters (here) for an accuracy rate of (x%). The KNN model took an exceptionally long time because of the sheer size of our dataset and number of features. Coupled with the low explainability, the KNN model is best left to the side while we explore potentionally better models.
+For our baseline model, we created a KNN with parameters (here) for an accuracy rate of (x%). The KNN model took an exceptionally long time because of the sheer size of our dataset and number of features. 
+Utilizing GridSearchCV and pipelines, we were given this result:
 
 ![KNN_validation](/images/KNN_validation.png)
+
+The best chosen parameters are 5 neighbors with leaf size of 15, using the distance weight. Although we could try to tune the parameters, using the KNN model for this dataset takes too long to train.
+Coupled with the low explainability, the KNN model is best left to the side while we explore potentionally better models.
 
 ## Logistic Regression
 
@@ -47,21 +58,60 @@ Because our model does not seem to be overfitting / underfitting, we did not fee
 
 ## Random Forest 
 
-The Random Forest Classifier ended up being our best model. With these parameters (here), the model scored an accuracy rate of (x%). While the Random Forest Classifier took longer than the Logistic Regression in training time, they share around the same level of explainability. And because we had enough resources and time to model using Random Forests, we chose to make it our final model.
+The Random Forest Classifier ended up being our best model. 
+
+We first created a GridSearchCV pipeline with the RandomForestClassifier estimator combined with StandardScaler. Our First iteration was with these hyper-parameters:
+
+![1RF](/images/Random_Forest_1.png)
+
+And the results:
+
+![RF2](/images/rf1.png)
+
+The validation accuracy is similar to the test, meaning that our cross validation is working well, and 68% is the best metric we were able to achieve so far. We tried to increase our testing performance by tuning the hyper-parameters as follows:
+
+![RF3](/images/rf3.png)
+
+![RF4](/images/rf4.png)
+
+However, the ending test validation metric had no change:
+
+![RF5](/images/rf5.png)
+
+We then tried to add a different hyper-parameter for Random Forests, max_depth:
+
+![RF6](/images/rf6.png)
+
+The new hyper-parameter seem to hurt our model's accuracy instead of improving it. Lets see if we adjust, we can achieve a higher accuracy than without this hyper-parameter.
+
+![RF7](images/rf7.png)
+
+We did score a better betric, but the model is saying the optimal max_depth is somewhere between 25 and 30, but the current metric of 67% does not convince me that the perfect depth parameter will give us a model greater than 68.23% accuracy we achived without this parameter.
+
+In conclusion:
+
+With these parameters 150 estimators and min samples leaf of 5, the model scored an accuracy rate of 68.23%. While the Random Forest Classifier took longer than the Logistic Regression in training time, they share around the same level of explainability. And because we had enough resources and time to model using Random Forests, we chose to make it our final model.
 
 ![Random_Forest_validation](/images/random_forest_val.png)
 
 
 # Results
 
-Our business problem has no bias against false negatives / false positives, the F1 score metric determined that the Random Forest Classifier is the best model with an F1 score of 68%.
+Our business problem has no bias against false negatives / false positives, the accuracy score metric determined that the Random Forest Classifier is the best model with an F1 score of 68%.
 
 The benefits of the Random Forest Classifier is the explainability of the model, meaning we can determine the most important features necessary for prediction. For more information on how we determined the most important features, check out our data_viz notebook!
 
 # Data Limitations
 
-The data was collected in Nepal, 2015, the application for the model may be difficult to find. In order to use this model for prediction, the features of the buildings in the new estimating area has to be somewhat similar to that of buildings in Nepal. With the data being 6 years old, it is also possible many potential dangers have been fixed.
+The first glaring issue with our current dataset is it only contains records of buildings that were damamged in some way or form. This means that the most ideal houses - the buildings with no damage are not present for our model to train on. If we had access to that data, we could build a model on the important factors of having no damage, and potentionally improve our damage classifier model as well.
+
+Secondly, because this data was comprised of buildings in Nepal, to have a a better application of the model for worldwide deployment, gathering similar information from our scenarios will make our model more univerally usable.
+
+Lastly, looking into ways of predicting ways of when / where an earthquake will strike using data over time may be a possible future research.
 
 # Conclusion
 
-Because earthquakes can be sudden and violent, it is imperative that areas in risk of an earthquake, prepare before it is too late. With the help of our model, with an  68.2% accuracy, we can determine help point regulators to buildings that could be buildings that is in risk of destruction come a major earthquake.
+Since earthquakes can be sudden and violent, it is imperative that areas in risk of an earthquake, prepare before it is too late. With the help of our Random Forest Classifier, the main factors of building damage has been decoded from the code: foundation and superstructure. 
+With an 68% accuracy, we are able to direct inspectors which buildings to inspect first for earthquake readiness to help prepare the country for the next major earthquake. 
+
+If you are reading this, I sincerely appreciate you taking your time to look at my project. I hope you come out with new knowledge you may have not had before.
