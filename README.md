@@ -62,7 +62,7 @@ The Random Forest Classifier ended up being our best model.
 
 We first created a GridSearchCV pipeline with the RandomForestClassifier estimator combined with StandardScaler. Our First iteration was with these hyper-parameters:
 
-![1RF](/images/Random_Forest_1.png)
+![1RF](/images/random_forest_1.png)
 
 And the results:
 
@@ -115,3 +115,22 @@ Since earthquakes can be sudden and violent, it is imperative that areas in risk
 With an 68% accuracy, we are able to direct inspectors which buildings to inspect first for earthquake readiness to help prepare the country for the next major earthquake. 
 
 If you are reading this, I sincerely appreciate you taking your time to look at my project. I hope you come out with new knowledge you may have not had before.
+
+## For More Information
+
+See the full analysis in the [Jupyter Notebook](./modeling_earthquake_damage.ipynb) or review this [Presentation](./Richter's_Predictor.pdf). For our full data preprocessing steps and exploratory data analysis, check out our [EDA Notebook Here](./EDA.ipynb)!
+
+For additional info contact [Michael Lee](mailto:baekho5767@gmail.com)
+
+## Repository Structure
+
+You are in the README.md right now. If you want to take a look at our Jupyter Notebook, go to the 'modeling_earthquake_damage.ipynb' to find our data science steps for you to replicate! The 'data' folder contains the original and engineered feature datasets we used to train and validate our model. The 'images' folder contains the images used within this README. We hope you find our research informative!
+```                              
+├── data
+├── images
+├── .gitignore
+├── EDA.ipynb
+├── modeling_earthquake_damage.ipynb
+├── Richter's_Predictor.pdf
+└── README.md
+
