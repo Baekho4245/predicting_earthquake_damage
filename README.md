@@ -2,7 +2,9 @@
 
 # ABSTRACT
 
-Earthquakes happen unexpectedly and sometimes, violently. We normally don't think about it in our daily lives, but we always do after the destruction. There are laws to help mitigate the damage of earthquakes, especially in areas with many titonic plates, but now we can take action to mitigate those damages before hand, through the power of data
+Statistica estimates over 20,000 deaths as a result of an earthquake each year.
+
+Earthquakes happen unexpectedly and sometimes, violently. We normally don't think about it in our daily lives, but we always do after the destruction. There are laws to help mitigate the damage of earthquakes, especially in areas with many tectonic plates, but now we can take action to mitigate those damages before hand, through the power of data.
 
 # Business Problem
 
@@ -14,7 +16,11 @@ We also found some class imbalance in our target variable, at about a 67 / 33 sp
 
 # Data Understanding
 
+Sourced from the 2015 Nepal Earthquake Open Data Portal [Here](http://eq2015.npc.gov.np/#/). 
+
 Dataset information:
+
+Contains information about damaged buildings from 2 major earthquakes that hit Nepal in 2015. The two earthquakes damaged over 760K buildings and affected over 3.5 Million indiviudals, or about 13% of the total population of Nepal. In our dataset, is a curated from from the open data portal, containing just over 260K buildings. 
 
 ![full_df_values](/images/full_df_values.png)
 
