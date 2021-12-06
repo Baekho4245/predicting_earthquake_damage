@@ -111,7 +111,9 @@ If you are reading this, I sincerely appreciate you taking your time to look at 
 
 ## For More Information
 
-See the full analysis in the [Jupyter Notebook](./modeling_earthquake_damage.ipynb) or review this [Presentation](./presentation.pdf). For our full data preprocessing steps and exploratory data analysis, check out our [EDA Notebook Here](./EDA.ipynb)!
+See the full analysis in the [Jupyter Notebook](./modeling_earthquake_damage.ipynb) or review this [Presentation](./presentation.pdf). For our full data preprocessing steps and exploratory data analysis, check out our [EDA Notebook Here](./data_preparatin_and_eda.ipynb)!
+
+The necessary dependencies and requirements are under 'environments.yml' and 'requirements.txt' files, respectively.
 
 For additional info contact [Michael Lee](mailto:baekho5767@gmail.com)
 
@@ -125,5 +127,7 @@ You are in the README.md right now. If you want to take a look at our Jupyter No
 ├── EDA.ipynb
 ├── modeling_earthquake_damage.ipynb
 ├── presentation.pdf
+├── environments.yml
+├── requirements.txt
 └── README.md
 
