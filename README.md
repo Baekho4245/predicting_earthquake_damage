@@ -1,4 +1,4 @@
-![Header_Image](images/title.png)
+![Header_Image](/images/title.png)
 
 # ABSTRACT
 
