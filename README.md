@@ -60,7 +60,7 @@ Because our model does not seem to be overfitting / underfitting, we did not fee
 
 The Random Forest Classifier ended up being our best model. 
 
-We first created a GridSearchCV pipeline with the RandomForestClassifier estimator combined with StandardScaler. Our First iteration was with these hyper-parameters:
+We first created a GridSearchCV pipeline with the RandomForestClassifier estimator combined with StandardScaler. Our Best iteration was with these hyper-parameters:
 
 ![1RF](/images/random_forest_1.png)
 
@@ -68,17 +68,8 @@ And the results:
 
 ![RF2](/images/rf1.png)
 
-The validation accuracy is similar to the test, meaning that our cross validation is working well, and 68% is the best metric we were able to achieve so far. We tried to increase our testing performance by tuning the hyper-parameters as follows:
 
-![RF3](/images/rf3.png)
-
-![RF4](/images/rf4.png)
-
-However, the ending test validation metric had no change:
-
-![RF5](/images/rf5.png)
-
-We then tried to add a different hyper-parameter for Random Forests, max_depth:
+To attempt a better accuracy score, we then tried to add a different hyper-parameter for Random Forests, max_depth:
 
 ![RF6](/images/rf6.png)
 
@@ -90,7 +81,7 @@ We did score a better betric, but the model is saying the optimal max_depth is s
 
 In conclusion:
 
-With these parameters 150 estimators and min samples leaf of 5, the model scored an accuracy rate of 68.23%. While the Random Forest Classifier took longer than the Logistic Regression in training time, they share around the same level of explainability. And because we had enough resources and time to model using Random Forests, we chose to make it our final model.
+With hpyer-parameters 150 estimators and min samples leaf of 5, the model scored an accuracy rate of 68.23%. While the Random Forest Classifier took longer than the Logistic Regression in training time, they share around the same level of explainability. And because we had enough resources and time to model using Random Forests, we chose to make it our final model.
 
 ![Random_Forest_validation](/images/random_forest_val.png)
 
@@ -118,7 +109,7 @@ If you are reading this, I sincerely appreciate you taking your time to look at 
 
 ## For More Information
 
-See the full analysis in the [Jupyter Notebook](./modeling_earthquake_damage.ipynb) or review this [Presentation](./Richter's_Predictor.pdf). For our full data preprocessing steps and exploratory data analysis, check out our [EDA Notebook Here](./EDA.ipynb)!
+See the full analysis in the [Jupyter Notebook](./modeling_earthquake_damage.ipynb) or review this [Presentation](./presentation.pdf). For our full data preprocessing steps and exploratory data analysis, check out our [EDA Notebook Here](./EDA.ipynb)!
 
 For additional info contact [Michael Lee](mailto:baekho5767@gmail.com)
 
@@ -131,6 +122,6 @@ You are in the README.md right now. If you want to take a look at our Jupyter No
 ├── .gitignore
 ├── EDA.ipynb
 ├── modeling_earthquake_damage.ipynb
-├── Richter's_Predictor.pdf
+├── presentation.pdf
 └── README.md
 
