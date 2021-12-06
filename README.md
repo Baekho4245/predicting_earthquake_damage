@@ -79,15 +79,11 @@ To attempt a better accuracy score, we then tried to add a different hyper-param
 
 ![RF6](/images/rf6.png)
 
-The new hyper-parameter seem to hurt our model's accuracy instead of improving it. Lets see if we adjust, we can achieve a higher accuracy than without this hyper-parameter.
+However, we were not able to achieve a accuracy rating higher with this new hyper-parameter than without. Thus, leaving out max_depth will help reduce model complexity and leave us with a better overall model.
 
-![RF7](images/rf7.png)
+Evaluation:
 
-We did score a better betric, but the model is saying the optimal max_depth is somewhere between 25 and 30, but the current metric of 67% does not convince me that the perfect depth parameter will give us a model greater than 68.23% accuracy we achived without this parameter.
-
-In conclusion:
-
-With hpyer-parameters 150 estimators and min samples leaf of 5, the model scored an accuracy rate of 68.23%. While the Random Forest Classifier took longer than the Logistic Regression in training time, they share around the same level of explainability. And because we had enough resources and time to model using Random Forests, we chose to make it our final model.
+With hyper-parameters 150 estimators and min samples leaf of 5, the model scored an accuracy rate of 68.23%. While the Random Forest Classifier took longer than the Logistic Regression in training time, they share around the same level of explainability. And because we had enough resources and time to model using Random Forests, we chose to make it our final model.
 
 ![Random_Forest_validation](/images/random_forest_val.png)
 
