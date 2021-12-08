@@ -124,7 +124,7 @@ You are in the README.md right now. If you want to take a look at our Jupyter No
 ├── data
 ├── images
 ├── .gitignore
-├── EDA.ipynb
+├── data_preparation_and_eda.ipynb
 ├── modeling_earthquake_damage.ipynb
 ├── presentation.pdf
 ├── environments.yml
